@@ -1,4 +1,14 @@
-import { errorHandler } from './errorHandler';
+function errorHandler(res) {
+  if(!res.ok) {
+    return res
+            .text()
+            .then(text => {
+              throw new Error(`${text}`);
+            });
+  }
+  else
+    return res.json();
+}
 
 export function uploadFile(file) {
   let form = new FormData();
