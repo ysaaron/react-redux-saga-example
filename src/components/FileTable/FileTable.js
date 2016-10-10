@@ -3,10 +3,10 @@ import {
   Table,
   Button
 } from 'react-bootstrap';
-// import {
-//   listOf,
-//   contains
-// } from 'react-immutable-proptypes';
+import {
+  listOf,
+  contains
+} from 'react-immutable-proptypes';
 
 import style from './file-table.scss';
 
@@ -100,4 +100,16 @@ export const FileTable = (props) => {
       </tbody>
     </Table>
   )
+}
+
+FileTable.propTypes = {
+  onCancelUploadingFile: PropTypes.func,
+  onFileDelete: PropTypes.func,
+  onRetryUploadingFile: PropTypes.func
+}
+
+FileTable.defaultProps = {
+  onCancelUploadingFile: e => {},
+  onFileDelete: e => {},
+  onRetryUploadingFile: e => {}
 }

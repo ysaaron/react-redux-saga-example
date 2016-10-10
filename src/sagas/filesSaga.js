@@ -24,8 +24,12 @@ export function* uploadFile(id, file) {
 export function* uploadFileFlow({ id }) {
   const file = yield select(selectors.getFileById, id);
   const task = yield fork(uploadFile, id, file);
-  const action = yield take(types.CANCEL_UPLOADING_FILE);
-  if(action.id === id) {
-    yield cancel(task);
+
+  while(task.isRunning()) {
+    const action = yield take(types.CANCEL_UPLOADING_FILE);
+
+    if(action.id === id) {
+      yield cancel(task);
+    }
   }
 }

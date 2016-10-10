@@ -14,7 +14,6 @@ import {
   addFile,
   deleteFile,
   cancelUploadingFile,
-  retryUploadingFile,
   uploadFile
 } from '../../actions';
 
@@ -63,7 +62,6 @@ export default connect(
     addFile,
     deleteFile,
     cancelUploadingFile,
-    retryUploadingFile,
     uploadFile
   }
 )(Main);

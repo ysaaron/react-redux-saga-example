@@ -12,7 +12,7 @@ import rootSaga from '../sagas';
 const sagaMiddleware = createSagaMiddleware();
 const loggerMiddleware = createLogger();
 const configureStore = () => {
-  let store = createStore(
+  const store = createStore(
     root,
     compose(
       applyMiddleware(sagaMiddleware, loggerMiddleware),

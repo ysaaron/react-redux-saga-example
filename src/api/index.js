@@ -1,3 +1,5 @@
+import { errorHandler } from './errorHandler';
+
 export function uploadFile(file) {
   let form = new FormData();
   form.append('file', file);
@@ -9,5 +11,5 @@ export function uploadFile(file) {
     method: 'POST',
     body: form
   })
-  .then(res => res.json())
+  .then(errorHandler)
 }
