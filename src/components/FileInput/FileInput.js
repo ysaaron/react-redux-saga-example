@@ -4,33 +4,35 @@ const fileInputStyle = {
   display: 'none'
 }
 
-export const FileInput = (props) => {
-  const handleFileChange = e => {
+export class FileInput extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleFileChange = e => {
     let files = e.target.files;
 
     files.length > 0 ? props.onChange(files) : f => f;
   }
 
-  return (
-    <label className="btn btn-default btn-file">
-      <input
-        type="file"
-        onChange={ e => handleFileChange(e) }
-        name={ props.name }
-        multiple={ props.multiple }
-        style={ fileInputStyle }
-      />
-      { props.children }
-    </label>
-  );
-}
-
-FileInput.propTypes = {
-
+  render() {
+    return (
+      <label className="btn btn-default btn-file">
+        <input
+          type="file"
+          onChange={ e => this.handleFileChange(e) }
+          name={ this.props.name }
+          multiple={ this.props.multiple }
+          style={ fileInputStyle }
+        />
+        { this.props.children }
+      </label>
+    )
+  }
 }
 
 FileInput.defaultProps = {
-  onChange: (e) => {},
+  onChange: () => {},
   multiple: false,
   name: ''
 }
